@@ -5,13 +5,13 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function Paginaprincipal() {
-  
 
-    return (
 
-      <>
-        <h2> Pagina principal </h2>
-        <div className="button-container">
+  return (
+
+    <>
+      <h2> Pagina principal </h2>
+      <div className="button-container">
         <Link to="/agregar-inventario">
           <button>Agregar Inventario Nuevo</button>
         </Link>
@@ -21,12 +21,12 @@ function Paginaprincipal() {
         <Link to="/inventario-vendido">
           <button>Inventario Vendido</button>
         </Link>
-        
-            </div>
-      </>
 
-    );
-  
+      </div>
+    </>
+
+  );
+
 
 }
 

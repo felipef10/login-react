@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 import Paginaprincipal from './paginaprincipal';
 import AgregarInventario from './AgregarInventario';
+import RegistrarUsuarios from './RegistrarUsuarios';
+
 
 function App() {
 
@@ -23,52 +25,56 @@ function App() {
   }
 
   async function Ingresar() {
-    const peticion = await fetch('http://localhost:3000/login?usuario=' + usuario + '&clave=' +clave,{credentials: 'include'})
-    if(peticion.ok){
+    const peticion = await fetch('http://localhost:3000/login?usuario=' + usuario + '&clave=' + clave, { credentials: 'include' })
+    if (peticion.ok) {
       setLogueado(true)
-    } else{
+      obtenerUsuarios();
+    } else {
       alert('Datos incorrectos')
     }
-   
+
   }
 
-async function validar(){
-  const peticion = await fetch('http://localhost:3000/validar', {credentials: 'include'})
-  if(peticion.ok){
-    setLogueado(true)
-  } 
-}
+  async function validar() {
+    const peticion = await fetch('http://localhost:3000/validar', { credentials: 'include' })
+    if (peticion.ok) {
+      setLogueado(true)
+    }
+  }
 
-useEffect(()=>{
-  validar()
-},[])
+  useEffect(() => {
+    validar()
+  }, [])
 
-return (
-  <Router>
-    <Routes>
-      {logueado ? (
-        <>
-          <Route path="/" element={<Paginaprincipal />} />
-          <Route path="/agregar-inventario" element={<AgregarInventario />} />
-        </>
-      ) : (
-        <Route
-          path="/"
-          element={
-            <div>
-              <h1>Inicio de sesión</h1>
-              <input placeholder="Usuario" type="text" name="usuario" id="usuario" value={usuario} onChange={cambiarUsuario} />
-              <input placeholder="Contraseña" type="password" name="clave" id="clave" value={clave} onChange={cambiarContraseña} />
-              <button onClick={Ingresar}>Ingresar</button>
-              <p>¿No tienes cuenta? <a href="crear_usuario.html">Crea una aquí</a></p>
-            </div>
-          }
-        />
-      )}
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  </Router>
-);
+  return (
+    <Router>
+      <Routes>
+        {logueado ? (
+          <>
+            <Route path="/" element={<Paginaprincipal />} />
+            <Route path="/agregar-inventario" element={<AgregarInventario />} />
+          </>
+        ) : (
+          <Route
+            path="/"
+            element={
+              <div>
+                <h1>Inicio de sesión</h1>
+                <input placeholder="Usuario" type="text" name="usuario" id="usuario" value={usuario} onChange={cambiarUsuario} />
+                <input placeholder="Contraseña" type="password" name="clave" id="clave" value={clave} onChange={cambiarContraseña} />
+                <button onClick={Ingresar}>Ingresar</button>
+                <p>
+                  ¿No tienes cuenta? <Link to="/registro">Crea una aquí</Link>
+                </p>
+              </div>
+            }
+          />
+        )}
+        <Route path="/registro" element={<RegistrarUsuarios />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App

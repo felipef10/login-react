@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate, Link } from 'react-router-dom';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import Paginaprincipal from './paginaprincipal';
 import AgregarInventario from './AgregarInventario';
 import RegistrarUsuarios from './RegistrarUsuarios';
+import Inventario from './Inventario';
 
 
 function App() {
@@ -52,7 +51,8 @@ function App() {
         {logueado ? (
           <>
             <Route path="/" element={<Paginaprincipal />} />
-            <Route path="/agregar-inventario" element={<AgregarInventario />} />
+            <Route path="/AgregarInventario" element={<AgregarInventario />} />
+            <Route path="/Inventario" element={<Inventario />} />
           </>
         ) : (
           <Route

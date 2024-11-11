@@ -1,0 +1,85 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+header img {
+  max-width: 150px;
+  margin: 20px 0;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 3000px;
+}
+
+.search-bar button {
+  padding: 0px;
+  margin-left: 0px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0px 0px;
+  border-radius: 4px;
+  cursor: pointer;
+}
